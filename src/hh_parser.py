@@ -1,12 +1,13 @@
 from src.abstract_classes import AbstractJobParser
 import requests
+from typing import Dict, Union
 
 
 class JobParserFromHH(AbstractJobParser):
-    def connect(self):
+    def connect(self) -> None:
         pass
 
-    def get_vacancies(self, search_query):
+    def get_vacancies(self, search_query: str) -> Union[Dict, str]:
         """
         здесь просто возвращаем json-файл со всеми вакансиями по запросу
         """
