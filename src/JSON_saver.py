@@ -1,4 +1,5 @@
 from src.abstract_classes import AbstractJobSaver
+from src.vacancies import Vacancies
 import json
 from typing import Dict, List
 
@@ -22,14 +23,14 @@ class JsonSaver(AbstractJobSaver):
             data = []
         return data
 
-    def _write_data(self, data) -> None:
+    def _write_data(self, data: List[Dict]) -> None:
         """
         внутренний метод для записи данных
         """
         with open(self.file_name, 'w', encoding='utf-8') as file:
             json.dump(data, file, ensure_ascii=False, indent=2)
 
-    def get_job(self, criteria_list):
+    def get_job(self, criteria_list: List[str]) -> List[Dict]:
         """
         метод для поиска вакансий, соответствующих определенным критериям
         """
@@ -46,7 +47,7 @@ class JsonSaver(AbstractJobSaver):
 
         return matching_jobs
 
-    def add_job(self, job):
+    def add_job(self, job: Vacancies) -> None:
         """
         метод для добавления новой записи о вакансии
         """
@@ -54,7 +55,7 @@ class JsonSaver(AbstractJobSaver):
         data.append(job.to_dict())  # преобразование объекта в словарь перед добавлением, используется метод класса Vacancies
         self._write_data(data)
 
-    def remove_job(self, job):
+    def remove_job(self, job: Vacancies) -> None:
         """
         метод для удаления записи из списка данных
         """

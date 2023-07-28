@@ -1,6 +1,6 @@
 import requests
 from src.abstract_classes import AbstractJobParser
-from typing import Dict
+from typing import Dict, Union
 import os
 
 
@@ -22,7 +22,7 @@ class SuperJobParser(AbstractJobParser):
         response.raise_for_status()  # проверка на ошибки
         return response.json()
 
-    def get_vacancies(self, search_query: str) -> Dict:
+    def get_vacancies(self, search_query: str) -> Union[Dict, str]:
         """
         метод для получения вакансий по запросу
         """
