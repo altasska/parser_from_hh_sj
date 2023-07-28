@@ -11,7 +11,7 @@ class JsonSaver(AbstractJobSaver):
     def __init__(self, file_name: str):
         self.file_name = file_name
 
-    def _read_data(self) -> Dict[List]:
+    def _read_data(self) -> Dict:
         """
         внутренний метод для чтения данных
         """
